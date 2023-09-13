@@ -3,6 +3,7 @@ const { EmbedBuilder } = require('discord.js')
 
 module.exports = new Event('voiceStateUpdate', async (client, oldState, newState) => {
   if (!newState.channel) return
+  if (oldState.channel.id === newState.channel.id) return
   const members = newState.channel.members.map((k, v) => k)
   if (members.length !== 1) return
 
